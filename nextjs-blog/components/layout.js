@@ -1,7 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
 const name = 'Melissa Alasalmi'
@@ -9,7 +7,7 @@ export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <div className='max-w-[36rem] py-0 px-4 mt-12 mx-auto mb-24'>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -25,18 +23,18 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <header className='flex flex-col items-center'>
         {home ? (
           <>
             <Image
               priority
               src="/images/profile.png"
-              className={utilStyles.borderCircle}
+              className='rounded-full'
               height={144}
               width={144}
               alt={name}
             />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <h1 className="mx-0 my-4 text-3xl font-extrabold leading-5 tracking-tight">{name}</h1>
           </>
         ) : (
           <>
@@ -45,16 +43,16 @@ export default function Layout({ children, home }) {
                 <Image
                   priority
                   src="/images/profile.png"
-                  className={utilStyles.borderCircle}
+                  className='rounded-full'
                   height={108}
                   width={108}
                   alt={name}
                 />
               </a>
             </Link>
-            <h2 className={utilStyles.headingLg}>
+            <h2 className="mx-0 my-4 text-2xl leading-5">
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                <a className='text-inherit'>{name}</a>
               </Link>
             </h2>
           </>
@@ -62,9 +60,9 @@ export default function Layout({ children, home }) {
       </header>
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div>
           <Link href="/">
-            <a>← Back to home</a>
+            <a className='my-0 mt-12 mb-0'>← Back to home</a>
           </Link>
         </div>
       )}
